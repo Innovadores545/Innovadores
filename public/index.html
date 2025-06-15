@@ -1,0 +1,33 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Biblioteca Web</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>Biblioteca 📚</h1>
+
+  <section>
+    <h2>Buscar libros</h2>
+    <input type="text" id="buscar" placeholder="Título o Autor">
+    <button onclick="buscarLibros()">Buscar</button>
+    <ul id="resultadosBusqueda"></ul>
+  </section>
+
+  <!--<section>
+    <h2>Top 5 Libros Favoritos</h2>
+    <ul id="topLibros"></ul>
+  </section>-->
+
+  <section>
+    <h2>Agregar libro</h2>
+    <input type="text" id="titulo" placeholder="Título del libro">
+    <input type="text" id="autorId" placeholder="ID del autor">
+    <button onclick="agregarLibro()">Agregar</button>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

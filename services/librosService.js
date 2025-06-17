@@ -2,7 +2,7 @@
 const librosData = require('../data/librosData');
 
 async function crearLibro(libro) {
-  // Aquí podrías validar que no haya otro libro con el mismo título
+  //validar que no haya otro libro con el mismo título
   const librosExistentes = await librosData.obtenerLibros();
   const existe = librosExistentes.some(l => l.titulo === libro.titulo);
   if (existe) {

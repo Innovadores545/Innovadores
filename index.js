@@ -9,17 +9,17 @@ const PORT = 3000;
 const serviceAccount = require('./firebase/serviceAccountKey.json');
 
 try {
-  // Verificar si Firebase ya está inicializado para evitar errores
+  
   if (!admin.apps.length) {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: "https://mi-libros-app.firebaseio.com" // Asegúrate de incluir esta línea
+      databaseURL: "https://mi-libros-app.firebaseio.com" 
     });
     console.log('Firebase inicializado correctamente');
   }
 } catch (error) {
   console.error('Error al inicializar Firebase:', error);
-  process.exit(1); // Salir si hay error en la inicialización
+  process.exit(1); 
 }
 
 // Middlewares
@@ -27,7 +27,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Importar y montar rutas (una sola vez cada una)
+// Importar y montar rutas 
 const librosRoutes = require('./routes/librosRoutes');
 const autoresRoutes = require('./routes/autoresRoutes');
 const usuariosRoutes = require('./routes/usuariosRoutes');
@@ -38,7 +38,7 @@ app.use('/api/autores', autoresRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/favoritos', favoritosRoutes);
 
-// Verificación de conexión a Firestore (opcional para debug)
+// Verificación de conexión a Firestore 
 admin.firestore().listCollections()
   .then(() => console.log('Conexión a Firestore establecida'))
   .catch(err => console.error('Error conectando a Firestore:', err));
@@ -46,4 +46,4 @@ admin.firestore().listCollections()
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});// Cambio mínimo para forzar subida
+});

@@ -33,5 +33,5 @@ async function obtenerTop5(req, res) {
 module.exports = {
   marcarFavorito,
   eliminarFavorito,
-  obtenerTop5  // ¡Asegúrate de que el nombre coincida con la ruta!
+  obtenerTop5  
 };

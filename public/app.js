@@ -1,6 +1,6 @@
 // public/app.js
 
-const API_URL = 'http://localhost:3000/api'; // Ajusta si usas otro puerto
+const API_URL = 'http://localhost:3000/api'; 
 
 async function buscarLibros() {
   const query = document.getElementById('buscar').value.toLowerCase();

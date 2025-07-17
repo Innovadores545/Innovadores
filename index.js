@@ -31,12 +31,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 const librosRoutes = require('./routes/librosRoutes');
 const autoresRoutes = require('./routes/autoresRoutes');
 const usuariosRoutes = require('./routes/usuariosRoutes');
-const favoritosRoutes = require('./routes/favoritosRoutes');
+const favoritosRouter = require('./routes/favoritosRoutes');
 
 app.use('/api/libros', librosRoutes);
 app.use('/api/autores', autoresRoutes);
 app.use('/api/usuarios', usuariosRoutes);
-app.use('/api/favoritos', favoritosRoutes);
+app.use('/api/favoritos', favoritosRouter);
 
 // Verificación de conexión a Firestore 
 admin.firestore().listCollections()

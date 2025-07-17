@@ -1,1 +1,11 @@
+# Dependencias
+node_modules/
+
+# Credenciales de Firebase
 firebase/serviceAccountKey.json
+
+# Archivos temporales o locales
+server.js
+
+# Opcionales
+package-lock.json

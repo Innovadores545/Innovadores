@@ -3,18 +3,23 @@ const admin = require('../firebaseAdmin');
 
 async function marcarFavorito(usuarioId, libroId) {
   const db = admin.firestore();
-  const yaExiste = await db.collection('favoritos')
+  
+  const existe = await db.collection('favoritos')
     .where('usuarioId', '==', usuarioId)
     .where('libroId', '==', libroId)
     .get();
 
-  if (!yaExiste.empty) {
-    throw new Error('Este libro ya está marcado como favorito por este usuario.');
+  if (!existe.empty) {
+    throw new Error('Este libro ya está en tus favoritos');
   }
 
-  const nuevoFavorito = { usuarioId, libroId, fecha: new Date().toISOString() };
-  const doc = await db.collection('favoritos').add(nuevoFavorito);
-  return { id: doc.id, ...nuevoFavorito };
+  await db.collection('favoritos').add({
+    usuarioId,
+    libroId,
+    fecha: admin.firestore.FieldValue.serverTimestamp()
+  });
+
+  return { success: true };
 }
 
 async function eliminarFavorito(usuarioId, libroId) {
@@ -33,31 +38,62 @@ async function eliminarFavorito(usuarioId, libroId) {
 
 async function obtenerTop5LibrosFavoritos() {
   const db = admin.firestore();
-  const snapshot = await db.collection('favoritos').get();
-  const conteo = {};
+  try {
+    const favoritosSnapshot = await db.collection('favoritos').get();
+    const conteo = {};
 
-  snapshot.forEach(doc => {
-    const { libroId } = doc.data();
-    conteo[libroId] = (conteo[libroId] || 0) + 1;
-  });
+    favoritosSnapshot.forEach(doc => {
+      const libroId = doc.data().libroId;
+      conteo[libroId] = (conteo[libroId] || 0) + 1;
+    });
 
-  const top5Ids = Object.entries(conteo)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5)
-    .map(([libroId]) => libroId);
+    const top5Ids = Object.entries(conteo)
+      .sort((a, b) => b[1] - a[1])
+      .map(([id]) => id);
 
-  const librosSnapshot = await db.collection('libros').get();
+    const librosPromises = top5Ids.map(async libroId => {
+      const libroDoc = await db.collection('libros').doc(libroId).get();
+      return {
+        id: libroId,
+        ...libroDoc.data(),
+        favoritos: conteo[libroId] || 0
+      };
+    });
 
-  const topLibros = librosSnapshot.docs
-    .filter(doc => top5Ids.includes(doc.id))
-    .map(doc => ({ id: doc.id, ...doc.data(), favoritos: conteo[doc.id] || 0 }))
-    .sort((a, b) => b.favoritos - a.favoritos);
+    return await Promise.all(librosPromises);
 
-  return topLibros;
+  } catch (error) {
+    console.error('Error en obtenerTop5LibrosFavoritos:', error);
+    return []; 
+  }
+}
+async function obtenerFavoritosPorUsuario(usuarioId) {
+  const db = admin.firestore();
+  try {
+    const snapshot = await db.collection('favoritos')
+      .where('usuarioId', '==', usuarioId)
+      .get();
+
+    const favoritos = [];
+    for (const doc of snapshot.docs) {
+      const libroDoc = await db.collection('libros').doc(doc.data().libroId).get();
+      favoritos.push({
+        id: doc.id,
+        ...doc.data(),
+        libroInfo: libroDoc.data() || null
+      });
+    }
+    return favoritos;
+
+  } catch (error) {
+    console.error('Error en obtenerFavoritosPorUsuario:', error);
+    return []; 
+  }
 }
 
 module.exports = {
   marcarFavorito,
   eliminarFavorito,
-  obtenerTop5LibrosFavoritos
+  obtenerTop5LibrosFavoritos,
+  obtenerFavoritosPorUsuario
 };

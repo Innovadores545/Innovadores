@@ -1,4 +1,3 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,25 +6,25 @@
   <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-  <h1>Biblioteca 📚</h1>
+  <h1>Biblioteca</h1>
 
   <section>
     <h2>Buscar libros</h2>
     <input type="text" id="buscar" placeholder="Título o Autor">
-    <button onclick="buscarLibros()">Buscar</button>
-    <ul id="resultadosBusqueda"></ul>
+    <button id="buscarBtn">Buscar</button>
+    <div id="resultadosBusqueda"></div>
   </section>
 
-  <!--<section>
+  <section>
     <h2>Top 5 Libros Favoritos</h2>
     <ul id="topLibros"></ul>
-  </section>-->
+  </section>
 
   <section>
     <h2>Agregar libro</h2>
     <input type="text" id="titulo" placeholder="Título del libro">
     <input type="text" id="autorId" placeholder="ID del autor">
-    <button onclick="agregarLibro()">Agregar</button>
+    <button id="agregarBtn">Agregar</button>
   </section>
 
   <script src="app.js"></script>

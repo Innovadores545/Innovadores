@@ -1,66 +1,147 @@
 /* public/estilos.css */
+
+:root {
+  --color-primario: #3498db;
+  --color-primario-hover: #2980b9;
+  --color-fondo: #f4f6f8;
+  --color-texto: #333;
+  --color-titulo: #2c3e50;
+  --color-borde: #ddd;
+  --color-corazon: #ccc;
+  --color-corazon-activo: #ff6b6b;
+  --color-top-libros: #f8f9fa;
+  --sombra-suave: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --radio-borde: 8px;
+  --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 30px;
-  background-color: #f4f6f8;
-  color: #333;
-  line-height: 1.6;
+  font-family: var(--fuente);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.7;
+  font-size: 16px;
 }
 
 h1 {
-  color: #2c3e50;
-  font-size: 2rem;
-  margin-bottom: 20px;
+  color: var(--color-titulo);
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 600;
 }
 
-input {
-  margin: 5px 0;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
+section {
+  margin-bottom: 40px;
+  padding: 25px;
+  background-color: white;
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-suave);
+}
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+select {
+  padding: 12px 14px;
+  margin: 8px 0;
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  font-size: 1rem;
   box-sizing: border-box;
-  transition: border-color 0.3s ease;
+  transition: border 0.2s ease;
 }
 
-input:focus {
-  border-color: #3498db;
+input:focus,
+select:focus {
   outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
 button {
-  padding: 10px 16px;
-  background-color: #3498db;
+  padding: 12px 20px;
+  background-color: var(--color-primario);
   color: white;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 5px;
   font-size: 1rem;
+  font-weight: 500;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #2980b9;
-  transform: scale(1.03);
+  background-color: var(--color-primario-hover);
+  transform: translateY(-1px);
 }
 
-ul {
+#resultadosBusqueda {
+  margin-top: 25px;
+}
+
+.libro-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  margin: 10px 0;
+  background-color: #ffffff;
+  border-radius: var(--radio-borde);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease;
+}
+
+.libro-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.libro-item span {
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  flex: 1;
+}
+
+.corazon {
+  background: none;
+  border: none;
+  font-size: 1.6em;
+  cursor: pointer;
+  color: var(--color-corazon);
+  transition: transform 0.2s, color 0.2s;
+  padding: 6px;
+  margin-left: 12px;
+}
+
+.corazon:hover:not([disabled]) {
+  transform: scale(1.2);
+  color: var(--color-corazon-activo);
+}
+
+.corazon[disabled] {
+  color: var(--color-corazon-activo);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+#topLibros {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
   margin-top: 20px;
 }
 
-li {
-  background-color: #ffffff;
-  border: 1px solid #e1e4e8;
-  padding: 10px 15px;
-  border-radius: 5px;
+#topLibros li {
+  padding: 10px 14px;
   margin: 6px 0;
-  transition: background-color 0.2s ease;
-}
-
-li:hover {
-  background-color: #f0f0f0;
+  background-color: var(--color-top-libros);
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }

@@ -1,0 +1,65 @@
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Tabla de autores */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.table th, .table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+/* Botones */
+button {
+  background-color: #4285f4; /* Azul */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #3367d6; /* Azul más oscuro al hover */
+}
+
+
+
+/* Formulario */
+#nombreAutor {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 300px;
+  margin-right: 10px;
+}
+
+#guardarBtn {
+  padding: 10px 20px;
+}
+
+/* Mensajes */
+#listaAutores {
+  min-height: 50px;
+  margin: 20px 0;
+}

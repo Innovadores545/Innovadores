@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Autores, Libros y Usuarios API</title>
+  <link rel="stylesheet" href="css/autores.css" />
+  <link rel="stylesheet" href="css/libros.css" />
+  <link rel="stylesheet" href="css/usuarios.css" />
+  <link rel="stylesheet" href="css/favoritos.css" />
+</head>
+<body>
+
+  <h1>Búsqueda de Libros</h1>
+
+<div class="form-container">
+  <input type="text" id="busquedaInput" placeholder="Buscar por título o autor..." />
+  <button id="buscarLibroBtn">Buscar</button>
+</div>
+
+<div id="resultadosBusqueda">Ingresa una palabra para buscar libros...</div>
+
+<hr />
+
+  <h1>Autores</h1>
+
+  <div class="form-container">
+    <input type="text" id="nombreAutor" placeholder="Nombre del autor" />
+    <button id="guardarBtn">Guardar Autor</button>
+  </div>
+
+  <div id="listaAutores">Cargando autores...</div>
+
+  <hr />
+
+  <h1>Libros</h1>
+
+  <div class="form-container">
+    <input type="text" id="tituloLibro" placeholder="Título del libro" />
+    <select id="autorSelect">
+      <option value="">Seleccione autor</option>
+    </select>
+    <button id="guardarLibroBtn">Guardar Libro</button>
+  </div>
+
+  <div id="listaLibros">Cargando libros...</div>
+
+  <hr />
+
+  <h1>Usuarios</h1>
+
+  <div class="form-container">
+    <input type="text" id="nombreUsuario" placeholder="Nombre del usuario" />
+    <button id="guardarUsuarioBtn">Guardar Usuario</button>
+  </div>
+
+  <div id="listaUsuarios">Cargando usuarios...</div>
+
+  <h2>Favoritos</h2>
+<div>
+  <select id="usuarioFavoritoSelect">
+    <option value="">Seleccione usuario</option>
+  </select>
+
+  <select id="libroFavoritoSelect">
+    <option value="">Seleccione libro</option>
+  </select>
+
+  <button id="guardarFavoritoBtn">Agregar a favoritos</button>
+</div>
+
+<div id="listaFavoritos"></div>
+
+<hr />
+
+<div id="topLibrosFavoritos" style="margin-top: 20px;">
+  <h2>Top 5 Libros Favoritos</h2>
+  <button id="top5LibrosBtn">Mostrar Top 5</button>
+  <div id="top5LibrosResultados">
+    Aquí aparecerá el Top 5...
+  </div>
+</div>
+
+
+
+
+  <script type="module" src="/js/autores.js"></script>
+  <script type="module" src="/js/libros.js"></script>
+  <script type="module" src="/js/usuarios.js"></script>
+  <script type="module" src="/js/favoritos.js"></script>
+  <script type="module" src="/js/app.js"></script>
+
+</body>
+</html>

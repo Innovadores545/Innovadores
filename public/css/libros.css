@@ -1,0 +1,21 @@
+/* Input título libro */
+#tituloLibro {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 300px;
+  margin-right: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Select autor */
+#autorSelect {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 200px;
+  margin-right: 10px;
+  box-sizing: border-box;
+}

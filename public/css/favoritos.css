@@ -1,0 +1,35 @@
+/* Select para seleccionar usuario */
+#usuarioFavoritoSelect {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 220px;  /* un poco más ancho si quieres */
+  margin-right: 10px;
+  box-sizing: border-box;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Select para seleccionar libro */
+#libroFavoritoSelect {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 300px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Opcional: estilos cuando están enfocados */
+#usuarioFavoritoSelect:focus,
+#libroFavoritoSelect:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+
